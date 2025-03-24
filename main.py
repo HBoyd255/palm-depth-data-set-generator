@@ -1,10 +1,12 @@
-from modules.eye import Eye
+from modules.vision import Vision
 import cv2
 
 
-lefty = Eye()
+eyes = Vision()
 
 while True:
 
-    cv2.imshow("Eye", lefty.array())
+    cv2.imshow("Both Feeds", eyes.joined_array())
+    cv2.imshow("Overlay", eyes.onion_array())
+
     cv2.waitKey(1)
