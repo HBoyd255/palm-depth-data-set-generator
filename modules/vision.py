@@ -10,16 +10,25 @@ class Vision:
         self.left = Eye("Left")
         self.right = Eye("Right")
 
-    def both_arrays(self):
-        return self.left.array(), self.right.array()
+    def both_arrays(self, lowres=True):
+        return self.left.array(lowres=lowres), self.right.array(lowres=lowres)
 
-    def joined_array(self):
-        joined = numpy.hstack((self.left.array(), self.right.array()))
+    def joined_array(self, lowres=True):
+        joined = numpy.hstack(
+            (
+                self.left.array(lowres=lowres),
+                self.right.array(lowres=lowres),
+            )
+        )
         return joined
 
-    def onion_array(self):
+    def onion_array(self, lowres=True):
         onion = cv2.addWeighted(
-            self.left.array(), 0.5, self.right.array(), 0.5, 0
+            self.left.array(lowres=lowres),
+            0.5,
+            self.right.array(lowres=lowres),
+            0.5,
+            0,
         )
 
         return onion
