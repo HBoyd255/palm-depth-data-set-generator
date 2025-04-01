@@ -1,6 +1,11 @@
+import platform
 import cv2
 import numpy
 from modules.eye import Eye
+
+if platform.system() == "Windows":
+    print("\nThis module only works on the RPi.\n")
+    exit()
 
 
 class Vision:
